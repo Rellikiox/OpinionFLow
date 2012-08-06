@@ -8,6 +8,7 @@ class Agent;
 struct TopicOpinion {
 	double alignment;
 	double (*opinionChange)(double);
+	double (*randomOffset)(double);
 };
 
 struct AgentInfluence {
@@ -22,7 +23,7 @@ public:
 
 	Agent(unsigned int id);
 
-	bool SetAlignment(unsigned int alignment_id, double alignment, double (*change_function)(double));
+	bool SetAlignment(unsigned int alignment_id, double alignment, double (*change_function)(double), double (*randoffset_function)(double));
 	bool SetInfluencer(Agent * influencer, double respect_level);
 
 	void UpdateAlignment(unsigned int alignment_id);
