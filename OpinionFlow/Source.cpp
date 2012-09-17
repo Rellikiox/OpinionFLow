@@ -13,22 +13,22 @@ int main(void) {
 	Agent * agente_2 = new Agent(1);
 
 	agente_1->SetInfluencer(agente_2, 1);
-	agente_2->SetInfluencer(agente_1, 0);
+	agente_2->SetInfluencer(agente_1, -1);
 
 	agente_1->SetAlignment(0, 0, opchange, randoffset);
 	agente_2->SetAlignment(0, 1, opchange, randoffset);
 
 	while(true){
+		
+		cout << "A1: " << agente_1->GetAlignment(0) << endl;
+		cout << "A2: " << agente_2->GetAlignment(0) << endl;
 		agente_1->UpdateAlignment(0);
-		cout << "1: " << agente_1->GetAlignment(0) << endl;
-		cout << "2: " << agente_2->GetAlignment(0) << endl;
-
 		system("pause");
 		
+		
+		cout << "A1: " << agente_1->GetAlignment(0) << endl;
+		cout << "A2: " << agente_2->GetAlignment(0) << endl;
 		agente_2->UpdateAlignment(0);
-		cout << "1: " << agente_1->GetAlignment(0) << endl;
-		cout << "2: " << agente_2->GetAlignment(0) << endl;
-
 		system("pause");
 	}
 
@@ -36,9 +36,9 @@ int main(void) {
 }
 
 double opchange(double x) {
-	return x;
+	return x/5;
 }
 
 double randoffset(double x) {
-	return 0; //(rand()%200) / 10000.0 - 0.01;
+	return (rand()%200) / 10000.0 - 0.01;
 }
